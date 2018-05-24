@@ -119,14 +119,19 @@ Configuring Dependencies
 .Configure postgresql with the initial user and database:
 [source,bash]
 ----
-sudo -u postgres createuser taiga
-sudo -u postgres createdb taiga -O taiga --encoding='utf-8' --locale=en_US.utf8 --template=template0
+sudo su
+service postgresql start
+su postgres
+createuser taiga
+createdb taiga -O taiga --encoding='utf-8' --locale=en_US.utf8 --template=template0
 
 ----
 
 .Create a user named `taiga`, and a virtualhost for RabbitMQ (taiga-events)
 [source,bash]
 ----
+su taiga
+sudo service rabbitmq-server start
 sudo rabbitmqctl add_user taiga PASSWORD_FOR_EVENTS
 sudo rabbitmqctl add_vhost taiga
 sudo rabbitmqctl set_permissions -p taiga taiga ".*" ".*" ".*"
