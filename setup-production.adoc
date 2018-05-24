@@ -192,7 +192,7 @@ python manage.py sample_data
 To finish the setup of **taiga-back**, create the intial configuration file
 for proper static/media file resolution, optionally with email sending support:
 
-.Copy-paste the following config into `~/taiga-back/settings/local.py` and update it with your own details:
+. `cp ~/taiga-back/settings/local-example.py ~/taiga-back/settings/local.py` and update it with your own details:
 
 [source,python]
 ----
